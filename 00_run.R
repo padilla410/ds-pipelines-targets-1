@@ -21,4 +21,5 @@ eval_data <- prep_data(data_loc)
 generate_diagnostics(data_in = eval_data, file_out = '2_process/out')
 
 # generate and save plot
-plot_data(data_in = eval_data)
+plot_data(data_in = eval_data, file_out = '3_vizualize/out/figure_1.png',
+          width = 8, height = 10, res = 200, units = 'in')
