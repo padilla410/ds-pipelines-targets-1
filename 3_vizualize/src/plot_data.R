@@ -13,7 +13,8 @@ plot_data <- function(data_in, file_out, ...){
   par(omi = c(0,0,0.05,0.05), mai = c(1,1,0,0), las = 1, mgp = c(2,0.5,0), cex = 1.5)
   
   plot(NA, NA, xlim = c(2, 1000), ylim = c(4.7, 0.75),
-       ylab = "Test RMSE (°C)", xlab = "Training temperature profiles (#)", log = 'x', axes = FALSE)
+       ylab = expression(paste("Test RMSE (", degree, "C)")), 
+       xlab = "Training temperature profiles (#)", log = 'x', axes = FALSE)
   
   n_profs <- unique(data_in$n_prof) %>% sort(.) # removing hard coding of x-axis labels
   # n_profs <- c(2, 10, 50, 100, 500, 980)
