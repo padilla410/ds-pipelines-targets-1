@@ -44,14 +44,14 @@ plot_data <- function(data_in, file_out, ...){
   
   # add legend 
   ## generate named list from values assigned in `prep_data` function
-  d_legend <- eval_data %>% distinct(model_type, col, pch) %>% 
+  d_legend <- data_in %>% distinct(model_type, col, pch) %>%
     mutate(label = case_when(
       model_type == 'dl' ~ 'Deep Learning',
       model_type == 'pb' ~ 'Process-Based',
       model_type == 'pgdl' ~ 'Process-Guided Deep Learning'
     )) %>% 
     asplit(., 1)
-  names(d_legend) <- unique(eval_data$model_type)
+  names(d_legend) <- unique(data_in$model_type)
   
   
   ## Use named list to add labels for each model
@@ -74,4 +74,6 @@ plot_data <- function(data_in, file_out, ...){
   # text(2.3, 1.1, 'Process-Based', pos = 4, cex = 1.1)
   
   dev.off()
+  
+  return(file_out)
 }

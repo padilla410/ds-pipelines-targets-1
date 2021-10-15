@@ -4,7 +4,7 @@
 #' and produces a text file
 #' 
 #' @param data_in tbl, model results from ScienceBase
-#' @param file_out string, location where diagnostic text will be saved
+#' @param file_out string, complete file path where diagnostic text will be saved
 #' 
 generate_diagnostics <- function(data_in, file_out){
   
@@ -21,7 +21,10 @@ generate_diagnostics <- function(data_in, file_out){
   whisker::whisker.render(template_1 %>%
                           stringr::str_remove_all('\n') %>%
                           stringr::str_replace_all('  ', ' '), render_data ) %>%
-  cat(file = file.path(file_out, 'model_diagnostic_text.txt'))
+    cat(file = file_out)
+  
+  # return a file path
+  return(file_out)
 }
 
 #' Generate summary stats for model results
